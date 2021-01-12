@@ -18,9 +18,14 @@ function Product(name, imgPath) {
 
  
 
-  allProducts.push(this); 
-}
+  allProducts.push(this);
+  localStorage.setItem('stor', JSON.stringify(allProducts)); //is there a truthy value on the key ('stor') in empty storage?
 
+}
+if (localStorage.length>0) { //Is there a truthy value on the key in empty storage?
+  allProducts = JSON.parse(localStorage.getItem('stor'));//look for the key 'productVote' in local storage 
+  //If something is there then take that data and set it into the allProducts array
+} else {
   new Product('bag', 'bag.jpg');
   new Product('banana', 'banana.jpg');
   new Product('bathroom', 'bathroom.jpg');
@@ -42,7 +47,7 @@ function Product(name, imgPath) {
   new Product('water-can', 'water-can.jpg');
   new Product('wine-glass', 'wine-glass.jpg');
 
-
+}
 
 function randomImage() {
   var firstRandom = Math.floor(Math.random() * allProducts.length);
@@ -78,6 +83,7 @@ function randomImage() {
     firstImg.removeEventListener('click', handleImageClick);
     secondImg.removeEventListener('click', handleImageClick);
     thirdImg.removeEventListener('click', handleImageClick);
+
 
     var names = [];
       var shoun=[]
@@ -154,11 +160,9 @@ function randomImage() {
   });
     
 
-    displayResults(); 
+  displayResults(); 
 
-    
-
-    localStorage.setItem('productVotes', JSON.stringify(allProducts));
+   
   }
 
 }
@@ -204,3 +208,4 @@ function myFunction() {
      rowOne.appendChild(rowOneT)
      }
 }
+console.log(localStorage)
