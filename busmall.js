@@ -19,7 +19,6 @@ function Product(name, imgPath) {
  
 
   allProducts.push(this);
-  localStorage.setItem('stor', JSON.stringify(allProducts)); //is there a truthy value on the key ('stor') in empty storage?
 
 }
 if (localStorage.length>0) { //Is there a truthy value on the key in empty storage?
@@ -84,6 +83,7 @@ function randomImage() {
     secondImg.removeEventListener('click', handleImageClick);
     thirdImg.removeEventListener('click', handleImageClick);
 
+    localStorage.setItem('stor', JSON.stringify(allProducts)); //is there a truthy value on the key ('stor') in empty storage?
 
     var names = [];
       var shoun=[]
